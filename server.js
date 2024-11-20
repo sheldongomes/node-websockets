@@ -16,6 +16,24 @@ wss.on('connection', (ws) => {
   console.log('Client connected');
   ws.on('message', function message(data) {
     console.log('received: %s', data);
+    ws.send({
+  "version": "2",
+  "type": "opened",
+  "seq": 1,
+  "clientseq": 1,
+  "id": "e160e428-53e2-487c-977d-96989bf5c99d",
+  "parameters": {
+    "startPaused": false,
+    "media": [
+      {
+        "type": "audio",
+        "format": "PCMU",
+        "channels": ["external", "internal"],
+        "rate": 8000
+      }
+    ]        
+  }
+});
   });
   ws.on('close', () => console.log('Client disconnected'));
 });
