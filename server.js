@@ -35,7 +35,7 @@ wss.on('connection', (ws) => {
   console.log('Client connected');
   ws.on('message', function message(data) {
     console.log('received: %s', data);
-    ws.send(str(replyMessage));
+    ws.send(JSON.stringify(replyMessage));
   });
   ws.on('close', () => console.log('Client disconnected'));
 });
