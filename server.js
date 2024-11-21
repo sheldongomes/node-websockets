@@ -34,8 +34,8 @@ const openedMsg = {
 const closedMsg = {
     "version": "2",
     "type": "closed",
-    "seq": 1,
-    "clientseq": 1,
+    "seq": 2,
+    "clientseq": 2,
     "id": "sessionid",
     "parameters": {
       "reason":"end"
