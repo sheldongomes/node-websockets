@@ -17,7 +17,18 @@ const replyMessage = {
     "type": "opened",
     "seq": 1,
     "clientseq": 1,
-    "id": "sessionid"
+    "id": "sessionid",
+    "parameters": {
+        "startPaused": false,
+        "media": [
+            {
+                "type": "audio",
+                "format": "PCMU",
+                "channels": ["external", "internal"],
+                "rate": 8000
+            }
+        ]
+    }
 }
 
 wss.on('connection', (ws) => {
