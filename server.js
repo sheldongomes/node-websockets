@@ -37,9 +37,7 @@ const closedMsg = {
     "seq": 2,
     "clientseq": 2,
     "id": "sessionid",
-    "parameters": {
-      "reason":"end"
-    }
+    "parameters": {"reason":"end"}
   }
 
 wss.on('connection', (ws) => {
@@ -50,9 +48,11 @@ wss.on('connection', (ws) => {
     let id = dataObj.id;
     console.log(id);
     if (dataObj.type == 'open') {
+        console.log('replied: %s', JSON.stringify(openedMsg).replace("sessionid", id))
         ws.send(JSON.stringify(openedMsg).replace("sessionid", id));
     } else if (dataObj.type == 'close') {
-        ws.send(JSON.stringify(closedMsg));
+        console.log('replied: %s', JSON.stringify(closedMsg).replace("sessionid", id))
+        ws.send(JSON.stringify(closedMsg).replace("sessionid", id));
     }
     
   });
