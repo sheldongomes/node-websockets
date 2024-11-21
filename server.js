@@ -1,4 +1,4 @@
-'use strict';
+ionid'use strict';
 
 const express = require('express');
 const { Server } = require('ws');
@@ -17,7 +17,7 @@ const replyMessage = {
     "type": "opened",
     "seq": 1,
     "clientseq": 1,
-    "id": "e160e428-53e2-487c-977d-96989bf5c99d",
+    "id": "sessionid",
     "parameters": {
         "startPaused": false,
         "media": [
@@ -35,7 +35,10 @@ wss.on('connection', (ws) => {
   console.log('Client connected');
   ws.on('message', function message(data) {
     console.log('received: %s', data);
-    ws.send(JSON.stringify(replyMessage));
+    let dataObj = JSON.parse(data);
+    let id = dataObj.id;
+    console.log(id)
+    ws.send(JSON.stringify(replyMessage).replace("sessionid", id));
   });
   ws.on('close', () => console.log('Client disconnected'));
 });
