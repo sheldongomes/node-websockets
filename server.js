@@ -38,6 +38,7 @@ wss.on('connection', (ws) => {
     let dataObj = JSON.parse(data);
     let id = dataObj.id;
     console.log(id)
+    console.log('replied: %s', replyMessage.replace("sessionid", id))
     ws.send(JSON.stringify(replyMessage).replace("sessionid", id));
   });
   ws.on('close', () => console.log('Client disconnected'));
