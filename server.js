@@ -40,8 +40,9 @@ const closedMsg = {
     "parameters": {"reason":"end"}
   }
 
-wss.on('connection', (ws) => {
+wss.on('connection', (ws, req) => {
   console.log('Client connected');
+  console.log(req.headers)
   ws.on('message', function message(data) {
     console.log('received: %s', data);
     let dataObj = JSON.parse(data);
