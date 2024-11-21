@@ -37,7 +37,9 @@ const closedMsg = {
     "seq": 1,
     "clientseq": 1,
     "id": "sessionid",
-    "parameters": {}
+    "parameters": {
+      "reason":"end"
+    }
   }
 
 wss.on('connection', (ws) => {
